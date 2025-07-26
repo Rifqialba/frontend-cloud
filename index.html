@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Nadella Data</title>
+</head>
+<body>
+  <h1>Data dari Backend</h1>
+  <pre id="output">Loading...</pre>
+
+  <script>
+    fetch("/api/data")
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+      })
+      .catch(error => {
+        document.getElementById("output").textContent = "Gagal mengambil data: " + error;
+      });
+  </script>
+</body>
+</html>
